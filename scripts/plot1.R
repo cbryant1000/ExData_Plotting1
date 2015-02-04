@@ -7,9 +7,10 @@
 
 source("data.cache.R")
 
-getData <- data.cache()
+if (is.null(getData)) {
+  getData <- data.cache()  
+}
 d <- getData()
 png("plot1.png")
 hist(d[,3],col="red",xlab="Global Active Power (kilowatts)",main="Global Active Power")
-dev.copy(quartz)
 dev.off()
